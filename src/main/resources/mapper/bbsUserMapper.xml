@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yjlc.dao.bbsUserMapper" >
+  <resultMap id="BaseResultMap" type="com.yjlc.entity.bbsUser" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="u_name" property="uName" jdbcType="VARCHAR" />
+    <result column="u_password" property="uPassword" jdbcType="VARCHAR" />
+    <result column="u_email" property="uEmail" jdbcType="VARCHAR" />
+    <result column="u_birthday" property="uBirthday" jdbcType="TIMESTAMP" />
+    <result column="u_sex" property="uSex" jdbcType="BIT" />
+    <result column="u_class" property="uClass" jdbcType="INTEGER" />
+    <result column="u_statement" property="uStatement" jdbcType="VARCHAR" />
+    <result column="u_reg_date" property="uRegDate" jdbcType="TIMESTAMP" />
+    <result column="u_state" property="uState" jdbcType="TINYINT" />
+    <result column="u_point" property="uPoint" jdbcType="INTEGER" />
+    <result column="u_phone" property="uPhone" jdbcType="VARCHAR" />
+    <result column="u_lcon" property="uLcon" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, u_name, u_password, u_email, u_birthday, u_sex, u_class, u_statement, u_reg_date, 
+    u_state, u_point, u_phone, u_lcon
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bbs_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bbs_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yjlc.entity.bbsUser" >
+    insert into bbs_user (uid, u_name, u_password, 
+      u_email, u_birthday, u_sex, 
+      u_class, u_statement, u_reg_date, 
+      u_state, u_point, u_phone, 
+      u_lcon)
+    values (#{uid,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uPassword,jdbcType=VARCHAR}, 
+      #{uEmail,jdbcType=VARCHAR}, #{uBirthday,jdbcType=TIMESTAMP}, #{uSex,jdbcType=BIT}, 
+      #{uClass,jdbcType=INTEGER}, #{uStatement,jdbcType=VARCHAR}, #{uRegDate,jdbcType=TIMESTAMP}, 
+      #{uState,jdbcType=TINYINT}, #{uPoint,jdbcType=INTEGER}, #{uPhone,jdbcType=VARCHAR}, 
+      #{uLcon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yjlc.entity.bbsUser" >
+    insert into bbs_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="uName != null" >
+        u_name,
+      </if>
+      <if test="uPassword != null" >
+        u_password,
+      </if>
+      <if test="uEmail != null" >
+        u_email,
+      </if>
+      <if test="uBirthday != null" >
+        u_birthday,
+      </if>
+      <if test="uSex != null" >
+        u_sex,
+      </if>
+      <if test="uClass != null" >
+        u_class,
+      </if>
+      <if test="uStatement != null" >
+        u_statement,
+      </if>
+      <if test="uRegDate != null" >
+        u_reg_date,
+      </if>
+      <if test="uState != null" >
+        u_state,
+      </if>
+      <if test="uPoint != null" >
+        u_point,
+      </if>
+      <if test="uPhone != null" >
+        u_phone,
+      </if>
+      <if test="uLcon != null" >
+        u_lcon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null" >
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uEmail != null" >
+        #{uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="uBirthday != null" >
+        #{uBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uSex != null" >
+        #{uSex,jdbcType=BIT},
+      </if>
+      <if test="uClass != null" >
+        #{uClass,jdbcType=INTEGER},
+      </if>
+      <if test="uStatement != null" >
+        #{uStatement,jdbcType=VARCHAR},
+      </if>
+      <if test="uRegDate != null" >
+        #{uRegDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uState != null" >
+        #{uState,jdbcType=TINYINT},
+      </if>
+      <if test="uPoint != null" >
+        #{uPoint,jdbcType=INTEGER},
+      </if>
+      <if test="uPhone != null" >
+        #{uPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uLcon != null" >
+        #{uLcon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yjlc.entity.bbsUser" >
+    update bbs_user
+    <set >
+      <if test="uName != null" >
+        u_name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        u_password = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uEmail != null" >
+        u_email = #{uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="uBirthday != null" >
+        u_birthday = #{uBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uSex != null" >
+        u_sex = #{uSex,jdbcType=BIT},
+      </if>
+      <if test="uClass != null" >
+        u_class = #{uClass,jdbcType=INTEGER},
+      </if>
+      <if test="uStatement != null" >
+        u_statement = #{uStatement,jdbcType=VARCHAR},
+      </if>
+      <if test="uRegDate != null" >
+        u_reg_date = #{uRegDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uState != null" >
+        u_state = #{uState,jdbcType=TINYINT},
+      </if>
+      <if test="uPoint != null" >
+        u_point = #{uPoint,jdbcType=INTEGER},
+      </if>
+      <if test="uPhone != null" >
+        u_phone = #{uPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uLcon != null" >
+        u_lcon = #{uLcon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yjlc.entity.bbsUser" >
+    update bbs_user
+    set u_name = #{uName,jdbcType=VARCHAR},
+      u_password = #{uPassword,jdbcType=VARCHAR},
+      u_email = #{uEmail,jdbcType=VARCHAR},
+      u_birthday = #{uBirthday,jdbcType=TIMESTAMP},
+      u_sex = #{uSex,jdbcType=BIT},
+      u_class = #{uClass,jdbcType=INTEGER},
+      u_statement = #{uStatement,jdbcType=VARCHAR},
+      u_reg_date = #{uRegDate,jdbcType=TIMESTAMP},
+      u_state = #{uState,jdbcType=TINYINT},
+      u_point = #{uPoint,jdbcType=INTEGER},
+      u_phone = #{uPhone,jdbcType=VARCHAR},
+      u_lcon = #{uLcon,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>
