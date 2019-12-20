@@ -11,6 +11,9 @@
 .mtj.tmp/
 /target/*
 
+/.idea/*
+.gitignore
+
 # Package Files #
 *.jar
 *.war
